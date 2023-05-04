@@ -1,0 +1,138 @@
+.container {
+    height: fit-content;
+    width: 100%;
+    max-width: 1170px;
+    display: grid;
+    grid-template-rows: 90px 1fr;
+    gap: 70px;
+    padding-top: 50px;
+}
+
+.container__container {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(370px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    width: 370px;
+    height: fit-content;
+    min-height: 360px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    background-color: var(--cor-cinza);
+    color: var(--cor-branco);
+    padding: 24px 15px 56px 15px;
+    position: relative;
+    border-radius: 5px;
+}
+
+#monster-card {
+    background-image: url('../img/aboleth.png');
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.card__detail {
+    height: fit-content;
+    width: 270px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    background-color: var(--cor-cinza-alpha);
+    padding: 19px 10px;
+    border-radius: 5px;
+}
+
+.card__title {
+    height: 42px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    border-bottom: 4px solid var(--cor-vermelho);
+    margin-bottom: 14px;
+}
+
+#monster-card__title {
+    margin-bottom: 10px;
+}
+
+.card__title--title {
+    width: 100%;
+    font-size: 2.25rem;
+    font-weight: 700;
+}
+
+#monster-card__title--title {
+    font-size: 1.25rem
+}
+
+.card__description {
+    width: 100%;
+    height: fit-content;
+    font-size: 1.25rem;
+    margin-bottom: 32px;
+}
+
+#monster-card--desc {
+    margin-bottom: 14px;
+    font-size: 0.625rem;
+}
+
+.card__infos {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+}
+
+#monster-card--info {
+    gap: 10px;
+}
+
+.card__infos--info {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+#monster-card--text {
+    font-size: 0.625rem;
+}
+
+.card__btn {
+    height: 40px;
+    display: grid;
+    place-items: center;
+    place-self: center;
+    background-color: var(--cor-vermelho);
+    position: absolute;
+    top: 100%;
+    transform: translateY(-50%);
+    padding: 6px 34px;
+    border-radius: 5px;
+}
+
+.card__btn:hover {
+    cursor: pointer;
+    background-color: var(--cor-azul-cinza);
+    transition: 0.25s;
+}
+
+.card__btn--text {
+    font-size: 1.25rem;
+    color: var(--cor-branco);
+}
+

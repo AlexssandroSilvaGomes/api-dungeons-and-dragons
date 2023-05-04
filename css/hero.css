@@ -1,0 +1,68 @@
+.hero {
+    height: fit-content;
+    max-width: 1170px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 130px;
+}
+
+.hero__content {
+    height: 100%;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.hero__content--title {
+    font-size: 3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--cor-preto);
+}
+
+.hero__content--description {
+    padding-top: 1.5rem;
+    padding-bottom: 3rem;
+    font-size: 1.5rem;
+    color: var(--cor-preto);
+}
+
+.hero__content--btn {
+    height: 72px;
+    width: 370px;
+    border-radius: 25px;
+    background-color: var(--cor-vermelho);
+    color: var(--cor-branco);
+    border: none;
+    font-size: 1.5rem;
+}
+
+.hero__content--btn:hover {
+    cursor: pointer;
+    background-color: var(--cor-azul-cinza);
+    transition: 0.25s;
+}
+
+@keyframes diceRoll {
+    0% { transform: scale(1.2) ease-in; }
+    25% { transform: scale(1.2) rotate(20deg); }
+    100% {transform: scale(1) rotate(-360deg); }
+}
+
+.hero__img {
+    display: grid;
+    place-items: center;
+    height: 433px;
+    width: fit-content;
+    animation-name: diceRoll;
+    animation-delay: 10s;
+}
+
+.hero__img:hover {
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+

@@ -58,11 +58,12 @@
     height: 433px;
     width: fit-content;
     animation-name: diceRoll;
-    animation-delay: 10s;
+    animation-delay: 0.5s;
 }
 
 .hero__img:hover {
     animation-duration: 2s;
+    cursor: pointer;
     animation-iteration-count: infinite;
 }
 

@@ -13,10 +13,11 @@
     <link rel="stylesheet" href="./css/color.css">
     <link rel="stylesheet" href="./css/hero.css">
     <link rel="stylesheet" href="./css/content-card.css">
-    <script src="./js/scripts.js" defer type="module"></script>
-    <script src="./js/components/title.js"></script>
-    <script src="./js/components/btn.js" defer></script>
-    <script src="./js/cardClasses.js" defer></script>
+    <script src="./js/router.js" defer type="module"></script>
+    <script src="./js/components/title.js" defer type="module"></script>
+    <script src="./js/components/cardClasse.js" defer></script>
+    <script src="./js/components/cardRaca.js" defer></script>
+    <script src="./js/components/cardMonstro.js" defer></script>
     <script src="https://kit.fontawesome.com/be4450fc4f.js" crossorigin="anonymous"></script>
     <title>Dungeons & Dragons</title>
 </head>
@@ -62,8 +63,23 @@
     </header>
 
     <main id="root">
+        <div class="hero">
 
-
+            <div class="hero__content">
+                <h1 class="hero__content--title">
+                    DUNGEONS & DRAGONS
+                </h1>
+                <p class="hero__content--description">
+                    O jogo de interpretação Dungeons & Dragons é sobre contar histórias em mundos de espada e feitiçaria. Como jogos de faz de conta, D&D é conduzido pela imaginação. É sobre visualizar um castelo em ruínas em uma floresta escura e imaginar como um aventureiro fantástico pode reagir aos desafios que a cena apresenta.
+                </p>
+                <button class="hero__content--btn">
+                    Comece por Aqui!
+                </button>
+            </div>
+        
+            <img src="./img/Twenty_sided_dice.svg.png" alt="dado vermelho de 20 faces" class="hero__img">
+        </div>
+        
     </main>
 
 </body>

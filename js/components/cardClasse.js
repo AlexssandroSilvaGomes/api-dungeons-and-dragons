@@ -172,3 +172,4 @@ class CardClasse extends HTMLElement {
 }
 
 customElements.define('card-classe', CardClasse)
+

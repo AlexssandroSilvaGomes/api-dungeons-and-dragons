@@ -5,15 +5,14 @@ class CardClasse extends HTMLElement {
         super()
         this.shadow = this.attachShadow({mode:'open'})
         this.titulo = 'Barbarian'
-        this.descricao = 'A fierce warrior who can enter a battle rage'
         this.hit_die = ''
-        this.primary_ability = ''
+        this.proficiencies = ''
         this.saves = ''
         this.btn_title = 'view Barbarian detail'
     }
 
     static get observedAttributes(){
-        return['titulo', 'descricao', 'hit_die', 'primary_ability', 'saves', 'btn_title']
+        return['titulo', 'hit_die', 'proficiencies', 'primary_ability', 'saves', 'btn_title']
     }
 
     attributeChangedCallback(nameAttr, oldValue, newValue){
@@ -39,11 +38,11 @@ class CardClasse extends HTMLElement {
         }
 
         .card {
-            width: 370px;
+            width: 350px;
             height: fit-content;
-            min-height: 360px;
+            min-height: 340px;
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: flex-start;
             flex-direction: column;
             background-color: var(--cor-cinza);
@@ -60,20 +59,13 @@ class CardClasse extends HTMLElement {
             justify-content: flex-start;
             align-items: flex-end;
             border-bottom: 4px solid var(--cor-vermelho);
-            margin-bottom: 14px;
+            margin-bottom: 32px;
         }
 
         .card__title--title {
             width: 100%;
             font-size: 2.25rem;
             font-weight: 700;
-        }
-
-        .card__description {
-            width: 100%;
-            height: fit-content;
-            font-size: 1.25rem;
-            margin-bottom: 32px;
         }
 
         .card__infos {
@@ -130,10 +122,6 @@ class CardClasse extends HTMLElement {
     title.classList.add('card__title--title')
     title.textContent = this.titulo
 
-    const description = document.createElement('span')
-    description.classList.add('card__description')
-    description.textContent = this.descricao
-
     const cardInfo = document.createElement('div')
     cardInfo.classList.add('card__infos')
 
@@ -142,10 +130,10 @@ class CardClasse extends HTMLElement {
     hitDie.classList.add('hit-die')
     hitDie.textContent = `Hit Die: ${this.hit_die}`
 
-    const primaryAbility = document.createElement('div')
-    primaryAbility.classList.add('card__infos--info')
-    primaryAbility.classList.add('primaryAbility')
-    primaryAbility.textContent = `Primary Ability: ${this.primary_ability}` 
+    const proficiencies = document.createElement('div')
+    proficiencies.classList.add('card__infos--info')
+    proficiencies.classList.add('proficiencies')
+    proficiencies.textContent = `Proficiencies: ${this.proficiencies}` 
 
     const saves = document.createElement('div')
     saves.classList.add('card__infos--info')
@@ -160,9 +148,9 @@ class CardClasse extends HTMLElement {
     btnLink.href = '#'
     btnLink.textContent = `view ${this.btn_title} detail`
 
-    card.append(titleContainer, description, cardInfo, cardBtn)
+    card.append(titleContainer, cardInfo, cardBtn)
     titleContainer.append(title)
-    cardInfo.append(hitDie, primaryAbility, saves)
+    cardInfo.append(hitDie, proficiencies, saves)
     cardBtn.append(btnLink)
 
     return card

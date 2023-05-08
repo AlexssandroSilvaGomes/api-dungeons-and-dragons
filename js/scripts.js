@@ -3,38 +3,28 @@
 import './router.js'
 
 import { pegarNomeClasses } from './apiLinks.js'
-// import { pegarClasseInfo } from './apiLinks.js'
 
 const classes = await pegarNomeClasses()
 
-
-
-
-
-
-
-
 const criaCardClasse = (classe) => {
-
-    // const d = await fetch(`https://www.dnd5eapi.co/api/classes/barbarian`)
-    //     .then((res) => res.json())
-    //     .then((data) => {
-    //         return data
-    //     })
+    let savesArray = []
+    let profArray = []
+    const saves = classe.saving_throws.forEach(save => {
+        savesArray.push(save.name)
+        return savesArray
+    });
+    const prof = classe.proficiencies.forEach(proficience => {
+        profArray.push(proficience.name)
+        return profArray
+    });
+    
     const cardClasse = document.createElement('card-classe')
     cardClasse.titulo = classe.name
     // cardClasse.descricao
-    cardClasse.hit_die = fetch(`https://www.dnd5eapi.co/api/classes/barbarian`).then((res) => res.json()).then((data) => {
-            data.hit_die
-        })
-    // cardClasse.primary_ability
-    // cardClasse.saves
+    cardClasse.hit_die = classe.hit_die
+    cardClasse.proficiencies = `${profArray[0]}, ${profArray[1]} ...`
+    cardClasse.saves = `${savesArray[0]} & ${savesArray[1]}`
     cardClasse.btn_title = classe.name
-
-
-
-
-
 
     return cardClasse
 }
@@ -43,7 +33,9 @@ const criaCardClasse = (classe) => {
 
 export const carregarCardClasse = () => {
     const container = document.getElementById('container-classe')
-    const cardClasse = classes.results.map(criaCardClasse)
+    const cardClasse = classes.map(criaCardClasse)
 
     container.replaceChildren(...cardClasse)
+
+
 }

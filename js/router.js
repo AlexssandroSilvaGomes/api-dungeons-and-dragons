@@ -1,5 +1,7 @@
 'use strict'
 
+import { carregarCardClasse } from "./scripts.js"
+
 const routes =  {
     '/' : '/pages/home.html',
     '/classes' : '/pages/classes.html',
@@ -19,7 +21,9 @@ const route = async () => {
 
      document.getElementById('root').innerHTML = html
     
-
+    if(window.location.pathname == '/classes') {
+        carregarCardClasse()
+    }
     
     
 }

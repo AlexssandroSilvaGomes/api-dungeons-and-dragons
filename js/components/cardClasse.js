@@ -6,9 +6,9 @@ class CardClasse extends HTMLElement {
         this.shadow = this.attachShadow({mode:'open'})
         this.titulo = 'Barbarian'
         this.descricao = 'A fierce warrior who can enter a battle rage'
-        this.hit_die = 'Hit Die: '
-        this.primary_ability = 'Primary Ability: '
-        this.saves = 'Saves: '
+        this.hit_die = ''
+        this.primary_ability = ''
+        this.saves = ''
         this.btn_title = 'view Barbarian detail'
     }
 
@@ -140,17 +140,17 @@ class CardClasse extends HTMLElement {
     const hitDie = document.createElement('div')
     hitDie.classList.add('card__infos--info')
     hitDie.classList.add('hit-die')
-    hitDie.textContent = this.hit_die
+    hitDie.textContent = `Hit Die: ${this.hit_die}`
 
     const primaryAbility = document.createElement('div')
     primaryAbility.classList.add('card__infos--info')
     primaryAbility.classList.add('primaryAbility')
-    primaryAbility.textContent = this.primary_ability
+    primaryAbility.textContent = `Primary Ability: ${this.primary_ability}` 
 
     const saves = document.createElement('div')
     saves.classList.add('card__infos--info')
     saves.classList.add('saves')
-    saves.textContent = this.saves
+    saves.textContent = `Saves: ${this.saves}`
 
     const cardBtn = document.createElement('div')
     cardBtn.classList.add('card__btn')
@@ -158,7 +158,7 @@ class CardClasse extends HTMLElement {
     const btnLink = document.createElement('a')
     btnLink.classList.add('card__btn--text')
     btnLink.href = '#'
-    btnLink.textContent = this.btn_title
+    btnLink.textContent = `view ${this.btn_title} detail`
 
     card.append(titleContainer, description, cardInfo, cardBtn)
     titleContainer.append(title)
@@ -172,4 +172,6 @@ class CardClasse extends HTMLElement {
 }
 
 customElements.define('card-classe', CardClasse)
+
+
 

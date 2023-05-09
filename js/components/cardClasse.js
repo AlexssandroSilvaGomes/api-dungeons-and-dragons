@@ -38,9 +38,11 @@ class CardClasse extends HTMLElement {
         }
 
         .card {
-            width: 350px;
+            min-width: 350px;
+            max-width: 370px;
             height: fit-content;
             min-height: 340px;
+            max-height: 360px;
             display: flex;
             justify-content: flex-start;
             align-items: flex-start;

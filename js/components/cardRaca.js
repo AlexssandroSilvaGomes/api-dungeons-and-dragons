@@ -5,14 +5,15 @@ class CardRaca extends HTMLElement {
         super()
         this.shadow = this.attachShadow({mode:'open'})
         this.titulo = 'Dragonborn'
-        this.descricao = 'Dragonborn look very much like dragons standing erect in humanoid form, though they lack wings or a tail.'
-        this.racial_traits = 'Racial Traits: '
-        this.racial_description = '+2 Strength, +1 Charisma, Draconic Ancestry, Breath Weapon, Damage Resistance'
+        this.size = 'Medium'
+        this.languages = 'common, draconic'
+        this.ability_bonuses = '+2 Strength, +1 Charisma'
+        this.traits = ' Draconic Ancestry, Breath Weapon, Damage Resistance'
         this.btn_title = 'view Dragonborn detail'
     }
 
     static get observedAttributes(){
-        return['titulo', 'descricao', 'racial_traits', 'btn_title']
+        return['titulo', 'size', 'languages', 'ability_bonuses', 'traits', 'btn_title']
     }
 
     attributeChangedCallback(nameAttr, oldValue, newValue){
@@ -42,7 +43,7 @@ class CardRaca extends HTMLElement {
             height: fit-content;
             min-height: 360px;
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: flex-start;
             flex-direction: column;
             background-color: var(--cor-cinza);
@@ -59,20 +60,13 @@ class CardRaca extends HTMLElement {
             justify-content: flex-start;
             align-items: flex-end;
             border-bottom: 4px solid var(--cor-vermelho);
-            margin-bottom: 14px;
+            margin-bottom: 32px;
         }
 
         .card__title--title {
             width: 100%;
             font-size: 2.25rem;
             font-weight: 700;
-        }
-
-        .card__description {
-            width: 100%;
-            height: fit-content;
-            font-size: 1.25rem;
-            margin-bottom: 32px;
         }
 
         .card__infos {
@@ -129,21 +123,34 @@ class CardRaca extends HTMLElement {
     title.classList.add('card__title--title')
     title.textContent = this.titulo
 
-    const description = document.createElement('span')
-    description.classList.add('card__description')
-    description.textContent = this.descricao
-
     const cardInfo = document.createElement('div')
     cardInfo.classList.add('card__infos')
 
-    const racialTraits = document.createElement('div')
-    racialTraits.classList.add('card__infos--info')
-    racialTraits.classList.add('racial-traits')
-    racialTraits.textContent = this.racial_traits
+    const size = document.createElement('div')
+    size.classList.add('card__infos--info')
+    size.classList.add('size')
+    size.textContent = `Size: ${this.size}`
 
-    const racialDesc = document.createElement('span')
-    racialDesc.classList.add('card__description')
-    racialDesc.textContent = this.racial_description
+    const languages = document.createElement('div')
+    languages.classList.add('card__infos--info')
+    languages.classList.add('languages')
+    languages.textContent = `Languages: ${this.languages}`
+
+    const abilityBonuses = document.createElement('div')
+    abilityBonuses.classList.add('card__infos--info')
+    abilityBonuses.classList.add('ability-bonuses')
+    abilityBonuses.textContent = `Ability Bonuses: ${this.ability_bonuses}`
+
+    const traits = document.createElement('div')
+    traits.classList.add('card__infos--info')
+    traits.classList.add('traits')
+    traits.textContent = `Racial Traits: ${this.traits}`
+
+    
+
+    // const racialDesc = document.createElement('span')
+    // racialDesc.classList.add('card__description')
+    // racialDesc.textContent = this.racial_description
 
     const cardBtn = document.createElement('div')
     cardBtn.classList.add('card__btn')
@@ -151,11 +158,11 @@ class CardRaca extends HTMLElement {
     const btnLink = document.createElement('a')
     btnLink.classList.add('card__btn--text')
     btnLink.href = '#'
-    btnLink.textContent = this.btn_title
+    btnLink.textContent = `view ${this.btn_title} detail`
 
-    card.append(titleContainer, description, cardInfo, cardBtn)
+    card.append(titleContainer, cardInfo, cardBtn)
     titleContainer.append(title)
-    cardInfo.append(racialTraits, racialDesc)
+    cardInfo.append(size, languages, abilityBonuses, traits)
     cardBtn.append(btnLink)
 
     return card

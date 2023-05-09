@@ -1,13 +1,15 @@
 'use strict'
 
 import { carregarCardClasse } from "./scripts.js"
+import { carregarCardRaca } from "./scripts.js"
+import { carregarCardMonstro } from "./scripts.js"
 
-const routes =  {
-    '/' : '/pages/home.html',
-    '/classes' : '/pages/classes.html',
-    '/racas' : '/pages/racas.html',
-    '/monstros' : '/pages/monstros.html',
-    '/outros' : '/pages/outros.html'
+const routes = {
+    '/': '/pages/home.html',
+    '/classes': '/pages/classes.html',
+    '/racas': '/pages/racas.html',
+    '/monstros': '/pages/monstros.html',
+    '/outros': '/pages/outros.html'
 }
 
 const route = async () => {
@@ -19,13 +21,17 @@ const route = async () => {
     const response = await fetch(routes[path])
     const html = await response.text()
 
-     document.getElementById('root').innerHTML = html
-    
-    if(window.location.pathname == '/classes') {
+    document.getElementById('root').innerHTML = html
+
+    if (window.location.pathname == '/classes') {
         carregarCardClasse()
+    } else if (window.location.pathname == '/racas') {
+        carregarCardRaca()
+    } else if (window.location.pathname == '/monstros') {
+        carregarCardMonstro()
     }
-    
-    
+
+
 }
 
 window.route = route

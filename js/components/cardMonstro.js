@@ -5,8 +5,8 @@ class CardMonstro extends HTMLElement {
         super()
         this.shadow = this.attachShadow({mode:'open'})
         this.titulo = 'Aboleth'
-        this.descricao = 'Dragonborn look very much like dragons standing erect in humanoid form, though they lack wings or a tail.'
-        this.hit_die = 'Hit Die: '
+        this.hit_dice = 'Dragonborn look very much like dragons standing erect in humanoid form, though they lack wings or a tail.'
+        this.hit_points = 'Hit Die: '
         this.type = 'Type: '
         this.size = 'Size: '
         this.alignment = 'Alignment: '
@@ -15,7 +15,7 @@ class CardMonstro extends HTMLElement {
     }
 
     static get observedAttributes(){
-        return['titulo', 'descricao', 'hit_die', 'type', 'size', 'alignment', 'btn_title', 'foto']
+        return['titulo', 'hit_dice', 'hit_points', 'type', 'size', 'alignment', 'btn_title', 'foto']
     }
 
     attributeChangedCallback(nameAttr, oldValue, newValue){
@@ -67,9 +67,9 @@ class CardMonstro extends HTMLElement {
         
         .card__detail {
             height: fit-content;
-            width: 270px;
+            min-width: 270px;
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: flex-start;
             flex-direction: column;
             background-color: var(--cor-cinza-alpha);
@@ -98,19 +98,7 @@ class CardMonstro extends HTMLElement {
         }
         
         #monster-card__title--title {
-            font-size: 1.25rem
-        }
-        
-        .card__description {
-            width: 100%;
-            height: fit-content;
-            font-size: 1.25rem;
-            margin-bottom: 32px;
-        }
-        
-        #monster-card--desc {
-            margin-bottom: 14px;
-            font-size: 0.625rem;
+            font-size: 1.75rem
         }
         
         .card__infos {
@@ -133,7 +121,7 @@ class CardMonstro extends HTMLElement {
         }
         
         #monster-card--text {
-            font-size: 0.625rem;
+            font-size: 0.75rem;
         }
         
         .card__btn {
@@ -181,38 +169,39 @@ class CardMonstro extends HTMLElement {
     title.id = 'monster-card__title--title'
     title.textContent = this.titulo
 
-    const description = document.createElement('span')
-    description.classList.add('card__description')
-    description.id = 'monster-card--desc'
-    description.textContent = this.descricao
-
     const cardInfo = document.createElement('div')
     cardInfo.classList.add('card__infos')
     cardInfo.id = 'monster-card--info'
 
-    const hitDie = document.createElement('div')
-    hitDie.classList.add('card__infos--info')
-    hitDie.classList.add('hit-die')
-    hitDie.id = 'monster-card--text'
-    hitDie.textContent = this.hit_die
+    const hitDice = document.createElement('div')
+    hitDice.classList.add('card__infos--info')
+    hitDice.classList.add('hit-dice')
+    hitDice.id = 'monster-card--text'
+    hitDice.textContent = `Hit Dice: ${this.hit_dice}`
+
+    const hitPoints = document.createElement('div')
+    hitPoints.classList.add('card__infos--info')
+    hitPoints.classList.add('hit-die')
+    hitPoints.id = 'monster-card--text'
+    hitPoints.textContent = `Hit Points: ${this.hit_points}`
 
     const type = document.createElement('div')
     type.classList.add('card__infos--info')
     type.classList.add('type')
     type.id = 'monster-card--text'
-    type.textContent = this.type
+    type.textContent = `Type: ${this.type}`
 
     const size = document.createElement('div')
     size.classList.add('card__infos--info')
     size.classList.add('size')
     size.id = 'monster-card--text'
-    size.textContent = this.size
+    size.textContent = `Size: ${this.size}`
 
     const alignment = document.createElement('div')
     alignment.classList.add('card__infos--info')
     alignment.classList.add('alignment')
     alignment.id = 'monster-card--text'
-    alignment.textContent = this.alignment
+    alignment.textContent = `Alignment: ${this.alignment}`
 
     const cardBtn = document.createElement('div')
     cardBtn.classList.add('card__btn')
@@ -220,12 +209,12 @@ class CardMonstro extends HTMLElement {
     const btnLink = document.createElement('a')
     btnLink.classList.add('card__btn--text')
     btnLink.href = '#'
-    btnLink.textContent = this.btn_title
+    btnLink.textContent = `view ${this.btn_title} detail`
 
     card.append(detail, cardBtn)
-    detail.append(titleContainer, description, cardInfo)
+    detail.append(titleContainer, cardInfo)
     titleContainer.append(title)
-    cardInfo.append(hitDie, type, size, alignment)
+    cardInfo.append(hitDice, hitPoints, type, size, alignment)
     cardBtn.append(btnLink)
 
     return card

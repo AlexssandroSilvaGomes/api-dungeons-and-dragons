@@ -9,10 +9,11 @@ class CardClasse extends HTMLElement {
         this.proficiencies = ''
         this.saves = ''
         this.btn_title = 'view Barbarian detail'
+        this.foto = '../img/img_classes/barbarian.png'
     }
 
     static get observedAttributes(){
-        return['titulo', 'hit_die', 'proficiencies', 'primary_ability', 'saves', 'btn_title']
+        return['titulo', 'hit_die', 'proficiencies', 'primary_ability', 'saves', 'btn_title', 'foto']
     }
 
     attributeChangedCallback(nameAttr, oldValue, newValue){
@@ -38,22 +39,36 @@ class CardClasse extends HTMLElement {
         }
 
         .card {
-            min-width: 350px;
-            max-width: 370px;
+            width: 370px;
             height: fit-content;
-            min-height: 340px;
-            max-height: 360px;
+            min-height: 360px;
             display: flex;
             justify-content: flex-start;
             align-items: flex-start;
             flex-direction: column;
-            background-color: var(--cor-cinza);
+            background-color: var(--cor-card);
             color: var(--cor-branco);
-            padding: 24px 15px 56px 15px;
+            padding: 30px 15px 56px 15px;
             position: relative;
             border-radius: 5px;
+            background-image: url(${this.foto});
+            background-position: 150% 0%;
+            background-size: 80%;
+            background-repeat: no-repeat;
         }
-
+        
+        .card__detail {
+            height: fit-content;
+            max-width: 270px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            flex-direction: column;
+            background-color: var(--cor-cinza-alpha);
+            padding: 19px 10px;
+            border-radius: 5px;
+        }
+        
         .card__title {
             height: 42px;
             width: 100%;
@@ -61,15 +76,15 @@ class CardClasse extends HTMLElement {
             justify-content: flex-start;
             align-items: flex-end;
             border-bottom: 4px solid var(--cor-vermelho);
-            margin-bottom: 32px;
+            margin-bottom: 10px;
         }
-
+        
         .card__title--title {
             width: 100%;
-            font-size: 2.25rem;
+            font-size: 1.75rem;
             font-weight: 700;
         }
-
+        
         .card__infos {
             width: 100%;
             height: fit-content;
@@ -77,14 +92,14 @@ class CardClasse extends HTMLElement {
             justify-content: center;
             align-items: flex-start;
             flex-direction: column;
-            gap: 16px;
+            gap: 10px;
         }
-
+        
         .card__infos--info {
-            font-size: 1.25rem;
+            font-size: 0.75rem;
             font-weight: 700;
         }
-
+        
         .card__btn {
             height: 40px;
             display: grid;
@@ -97,7 +112,7 @@ class CardClasse extends HTMLElement {
             padding: 6px 34px;
             border-radius: 5px;
         }
-
+        
         .card__btn:hover {
             cursor: pointer;
             background-color: var(--cor-azul-cinza);
@@ -116,6 +131,9 @@ class CardClasse extends HTMLElement {
     component() {
     const card = document.createElement('div')
     card.classList.add('card')
+
+    const detail = document.createElement('div')
+    detail.classList.add('card__detail')
 
     const titleContainer = document.createElement('div')
     titleContainer.classList.add('card__title')
@@ -150,7 +168,8 @@ class CardClasse extends HTMLElement {
     btnLink.href = '#'
     btnLink.textContent = `view ${this.btn_title} detail`
 
-    card.append(titleContainer, cardInfo, cardBtn)
+    card.append(detail, cardBtn)
+    detail.append(titleContainer, cardInfo)
     titleContainer.append(title)
     cardInfo.append(hitDie, proficiencies, saves)
     cardBtn.append(btnLink)

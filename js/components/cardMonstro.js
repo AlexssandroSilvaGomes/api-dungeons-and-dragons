@@ -11,7 +11,7 @@ class CardMonstro extends HTMLElement {
         this.size = 'Size: '
         this.alignment = 'Alignment: '
         this.btn_title = 'view Aboleth detail'
-        this.foto = '../img/aboleth.png'
+        this.foto = '../img/img_classesaboleth.png'
     }
 
     static get observedAttributes(){
@@ -45,24 +45,18 @@ class CardMonstro extends HTMLElement {
             height: fit-content;
             min-height: 360px;
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: flex-start;
             flex-direction: column;
             background-color: var(--cor-cinza);
             color: var(--cor-branco);
-            padding: 24px 15px 56px 15px;
+            padding: 30px 15px 56px 15px;
             position: relative;
             border-radius: 5px;
-        }
-        
-        #monster-card {
             background-image: url(${this.foto});
             background-position: center;
             background-size: 100% 100%;
             background-repeat: no-repeat;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
         }
         
         .card__detail {
@@ -84,21 +78,13 @@ class CardMonstro extends HTMLElement {
             justify-content: flex-start;
             align-items: flex-end;
             border-bottom: 4px solid var(--cor-vermelho);
-            margin-bottom: 14px;
-        }
-        
-        #monster-card__title {
             margin-bottom: 10px;
         }
         
         .card__title--title {
             width: 100%;
-            font-size: 2.25rem;
+            font-size: 1.75rem;
             font-weight: 700;
-        }
-        
-        #monster-card__title--title {
-            font-size: 1.75rem
         }
         
         .card__infos {
@@ -108,20 +94,12 @@ class CardMonstro extends HTMLElement {
             justify-content: center;
             align-items: flex-start;
             flex-direction: column;
-            gap: 16px;
-        }
-        
-        #monster-card--info {
             gap: 10px;
         }
         
         .card__infos--info {
-            font-size: 1.25rem;
-            font-weight: 700;
-        }
-        
-        #monster-card--text {
             font-size: 0.75rem;
+            font-weight: 700;
         }
         
         .card__btn {
@@ -155,52 +133,43 @@ class CardMonstro extends HTMLElement {
     component() {
     const card = document.createElement('div')
     card.classList.add('card')
-    card.id = 'monster-card'
 
     const detail = document.createElement('div')
     detail.classList.add('card__detail')
 
     const titleContainer = document.createElement('div')
     titleContainer.classList.add('card__title')
-    titleContainer.id = 'monster-card__title'
 
     const title = document.createElement('p')
     title.classList.add('card__title--title')
-    title.id = 'monster-card__title--title'
     title.textContent = this.titulo
 
     const cardInfo = document.createElement('div')
     cardInfo.classList.add('card__infos')
-    cardInfo.id = 'monster-card--info'
 
     const hitDice = document.createElement('div')
     hitDice.classList.add('card__infos--info')
     hitDice.classList.add('hit-dice')
-    hitDice.id = 'monster-card--text'
     hitDice.textContent = `Hit Dice: ${this.hit_dice}`
 
     const hitPoints = document.createElement('div')
     hitPoints.classList.add('card__infos--info')
     hitPoints.classList.add('hit-die')
-    hitPoints.id = 'monster-card--text'
     hitPoints.textContent = `Hit Points: ${this.hit_points}`
 
     const type = document.createElement('div')
     type.classList.add('card__infos--info')
     type.classList.add('type')
-    type.id = 'monster-card--text'
     type.textContent = `Type: ${this.type}`
 
     const size = document.createElement('div')
     size.classList.add('card__infos--info')
     size.classList.add('size')
-    size.id = 'monster-card--text'
     size.textContent = `Size: ${this.size}`
 
     const alignment = document.createElement('div')
     alignment.classList.add('card__infos--info')
     alignment.classList.add('alignment')
-    alignment.id = 'monster-card--text'
     alignment.textContent = `Alignment: ${this.alignment}`
 
     const cardBtn = document.createElement('div')

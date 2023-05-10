@@ -33,6 +33,7 @@ const criaCardClasse = (classe) => {
     cardClasse.proficiencies = profArray.join(", ")
     cardClasse.saves = savesArray.join(" & ")
     cardClasse.btn_title = classe.name
+    cardClasse.foto = `../img/img_classes/${classe.index}.png`
 
     return cardClasse
 }
@@ -45,6 +46,9 @@ export const carregarCardClasse = () => {
 
     container.replaceChildren(...cardClasse)
 }
+
+
+
 
 /******************************************** CARD RAÇAS ************************************************************/
 
@@ -81,6 +85,7 @@ const criaCardRaca = (raca) => {
         cardRaca.traits = traitsArray
     }
     cardRaca.btn_title = raca.name
+    cardRaca.foto = `../img/img_racas/${raca.index}.png`
 
     return cardRaca
 }

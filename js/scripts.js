@@ -130,3 +130,4 @@ export const carregarCardMonstro = () => {
 
     container.replaceChildren(...cardMonstro)
 }
+

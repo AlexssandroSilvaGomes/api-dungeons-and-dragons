@@ -8,8 +8,7 @@ const routes = {
     '/': '/pages/home.html',
     '/classes': '/pages/classes.html',
     '/racas': '/pages/racas.html',
-    '/monstros': '/pages/monstros.html',
-    '/outros': '/pages/outros.html'
+    '/monstros': '/pages/monstros.html'
 }
 
 const route = async () => {
@@ -21,6 +20,8 @@ const route = async () => {
     const response = await fetch(routes[path])
     const html = await response.text()
 
+    const btnStart = document.querySelector('.hero__content--btn')
+
     document.getElementById('root').innerHTML = html
 
     if (window.location.pathname == '/classes') {
@@ -31,7 +32,11 @@ const route = async () => {
         carregarCardMonstro()
     }
 
+    
 
 }
 
 window.route = route
+
+
+

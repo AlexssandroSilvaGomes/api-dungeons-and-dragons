@@ -2,7 +2,7 @@
 
 ![](./img/screenshot.PNG)
 
-[Projeto](https://alexssandrosilvagomes.github.io/api-dungeons-and-dragons/)
+[Projeto](https://dungeonanddragons.netlify.app/)
 
 # Sobre
 

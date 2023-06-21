@@ -174,6 +174,38 @@ class CardMonstro extends HTMLElement {
 
     const cardBtn = document.createElement('div')
     cardBtn.classList.add('card__btn')
+    cardBtn.addEventListener('click', (e) => {
+        const modals = document.querySelectorAll('.modal-monster')
+        modals.forEach(modal => {
+            if (modal.getAttribute('id') == this.titulo) {
+                e.preventDefault()
+
+                const overlay = document.getElementById('overlay')
+                modal.classList.add('active')
+                overlay.style.display = 'block'
+                document.body.style.overflow = 'hidden'
+
+                const body = document.querySelector('body')
+                const bodyH = body.offsetHeight
+                
+                let windowHeight = window.scrollY;
+                let modalHeight = modal.offsetHeight + 120;
+                let modalTop = 0
+                if(windowHeight >= (bodyH * 4)) {
+                    modalTop = (bodyH * 4.5)
+                    console.log(modalTop);
+                    windowHeight = window.scrollTo(0, (((modalTop / 2) + modalTop / 3) + 90))
+                    console.log(windowHeight);
+                    console.log('uiui');
+                } else {
+                    modalTop = windowHeight + (modalHeight / 2);
+                    console.log(modalTop);
+                }
+                modal.style.top = `${modalTop}px`;
+            }
+        })
+
+    })
 
     const btnLink = document.createElement('a')
     btnLink.classList.add('card__btn--text')

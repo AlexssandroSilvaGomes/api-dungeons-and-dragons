@@ -1,29 +1,119 @@
-<div class="container">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/color.css">
+    <link rel="stylesheet" href="../css/loading.css">
+    <link rel="stylesheet" href="../css/dialog/dialog-classe.css">
+    <link rel="stylesheet" href="../css/content-card.css">
+    <script src="../js/router.js" defer type="module"></script>
+    <script src="../js/api/api-classe.js" defer type="module"></script>
+    <script src="../js/scripts/card-classe.js" defer type="module"></script>
+    <script src="../js/components/title.js" defer type="module"></script>
+    <script src="../js/components/cardClasse.js" defer type="module"></script>
+    <script src="https://kit.fontawesome.com/be4450fc4f.js" crossorigin="anonymous"></script>
+    <title>Dungeons & Dragons</title>
+</head>
+<body>
+    <header>
 
-    <title-name title_name="Classes"></title-name>
-
-    <div class="container__container" id="container-classe">
-
-        <!-- <div class="card">
-            <div class="card__title">
-                <p class="card__title--title">
-                    Barbarian
-                </p>
+        <div class="header">
+            <a href="/" onclick="route()" class="header__logo">
+                <h3 class="header__logo--title">
+                    DUNGEONS&DRAGONS
+                </h3>
+                <img src="../img/icon-dnd-red-removebg-preview.png" alt="icone 'e' comercial semelhante a um dragão">
+            </a>
+            <div class="header__redes">
+                <a href="">
+                    <i class="fab fa-discord"></i>
+                </a>
+                <a href="">
+                    <i class="fab fa-twitch"></i>
+                </a>
+                <a href="">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="">
+                    <i class="fab fa-facebook-square"></i>
+                </a>
+                <a href="">
+                    <i class="fab fa-twitter"></i>
+                </a>
             </div>
-            <span class="card__description">
-                A fierce warrior who can enter a battle rage
-            </span>
-            <div class="card__infos">
-                <div class="card__infos--info hit-die">Hit Die:</div>
-                <div class="card__infos--info primary-ability">Primary Ability:</div>
-                <div class="card__infos--info saves">Saves:</div>
-            </div>
-            <div class="card__btn">
-                <a href="#" class="card__btn--text">view Barbarian detail</a>
-            </div>
-        </div> -->
+        </div>
 
+        <nav class="menu-container">
+            <a href="/" onclick="route()">HOME</a>
+            <a href="/classes" onclick="route()">CLASSES</a>
+            <a href="/racas" onclick="route()">RAÇAS</a>
+            <a href="/monstros" onclick="route()">MONSTROS</a>
+        </nav>
+
+    </header>
+    <main>
+
+        <section class="loading-screen">
+            <div>
+                <div>
+                    <span class="one h6"></span>
+                    <span class="two h3"></span>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <span class="one h1"></span>
+                    <span class="two h4"></span>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <span class="one h5"></span>
+                    <span class="two h2"></span>
+                </div>
+            </div>
+            <!-- <img src="../img/Twenty_sided_dice.svg.png" alt="dado vermelho de 20 faces" class="hero__img-dice"> -->
+        </section>
+
+        <div class="container">
+
+            <title-name title_name="Classes"></title-name>
         
+            <div class="container__container" id="container-classe">
+        
+                <!-- <div class="card">
+                    <div class="card__title">
+                        <p class="card__title--title">
+                            Barbarian
+                        </p>
+                    </div>
+                    <span class="card__description">
+                        A fierce warrior who can enter a battle rage
+                    </span>
+                    <div class="card__infos">
+                        <div class="card__infos--info hit-die">Hit Die:</div>
+                        <div class="card__infos--info primary-ability">Primary Ability:</div>
+                        <div class="card__infos--info saves">Saves:</div>
+                    </div>
+                    <div class="card__btn">
+                        <a href="#" class="card__btn--text">view Barbarian detail</a>
+                    </div>
+                </div> -->
+        
+                
+        
+            </div>
 
-    </div>
-</div>
+            <div class="overlay" id="overlay"></div>
+        </div>
+
+    </main>
+</body>
+</html>

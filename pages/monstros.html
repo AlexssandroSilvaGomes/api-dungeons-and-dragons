@@ -1,31 +1,119 @@
-<div class="container">
-    <title-name title_name="Monstros"></title-name>
-    <div class="container__container" id="container-monstro">
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/color.css">
+    <link rel="stylesheet" href="../css/loading.css">
+    <link rel="stylesheet" href="../css/content-card.css">
+    <link rel="stylesheet" href="../css/dialog/dialog-monster.css">
+    <script src="../js/router.js" defer type="module"></script>
+    <script src="../js/api/api-monstros.js" defer type="module"></script>
+    <script src="../js/scripts/card-monstro.js" defer type="module"></script>
+    <script src="../js/components/title.js" defer type="module"></script>
+    <script src="../js/components/cardMonstro.js" defer></script>
+    <script src="https://kit.fontawesome.com/be4450fc4f.js" crossorigin="anonymous"></script>
+    <title>Dungeons & Dragons</title>
+</head>
 
-        <!-- <div class="card" id="monster-card">
-            <div class="card__detail">
-                <div class="card__title" id="monster-card__title">
-                    <p class="card__title--title" id="monster-card__title--title">
-                        Aboleth
-                    </p>
-                </div>
-                <span class="card__description" id="monster-card--desc">
-                    Dragonborn look very much like dragons standing erect in humanoid form, though they lack wings or a tail.
-                </span>
-                <div class="card__infos" id="monster-card--info">
-                    <div class="card__infos--info hit-die" id="monster-card--text">Hit Die:</div>
-                    <div class="card__infos--info type" id="monster-card--text">Type:</div>
-                    <div class="card__infos--info size" id="monster-card--text">Size:</div>
-                    <div class="card__infos--info alignment" id="monster-card--text">alignment:</div>
+<body>
+    <header>
+
+        <div class="header">
+            <a href="/" onclick="route()" class="header__logo">
+                <h3 class="header__logo--title">
+                    DUNGEONS&DRAGONS
+                </h3>
+                <img src="../img/icon-dnd-red-removebg-preview.png" alt="icone 'e' comercial semelhante a um dragão">
+            </a>
+            <div class="header__redes">
+                <a href="">
+                    <i class="fab fa-discord"></i>
+                </a>
+                <a href="">
+                    <i class="fab fa-twitch"></i>
+                </a>
+                <a href="">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="">
+                    <i class="fab fa-facebook-square"></i>
+                </a>
+                <a href="">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
+        </div>
+
+        <nav class="menu-container">
+            <a href="/" onclick="route()">HOME</a>
+            <a href="/classes" onclick="route()">CLASSES</a>
+            <a href="/racas" onclick="route()">RAÇAS</a>
+            <a href="/monstros" onclick="route()">MONSTROS</a>
+        </nav>
+
+    </header>
+    <main>
+        <section class="loading-screen">
+            <div>
+                <div>
+                    <span class="one h6"></span>
+                    <span class="two h3"></span>
                 </div>
             </div>
-            <div class="card__btn">
-                <a href="#" class="card__btn--text">view Aboleth detail</a>
+            <div>
+                <div>
+                    <span class="one h1"></span>
+                    <span class="two h4"></span>
+                </div>
             </div>
-        </div> -->
+            <div>
+                <div>
+                    <span class="one h5"></span>
+                    <span class="two h2"></span>
+                </div>
+            </div>
+        </section>
+        <div class="container">
+            <title-name title_name="Monstros"></title-name>
+            <div class="container__container" id="container-monstro">
 
-        
 
-    </div>
-</div>
+                <!-- <div class="card" id="monster-card">
+                    <div class="card__detail">
+                        <div class="card__title" id="monster-card__title">
+                            <p class="card__title--title" id="monster-card__title--title">
+                                Aboleth
+                            </p>
+                        </div>
+                        <span class="card__description" id="monster-card--desc">
+                            Dragonborn look very much like dragons standing erect in humanoid form, though they lack wings or a tail.
+                        </span>
+                        <div class="card__infos" id="monster-card--info">
+                            <div class="card__infos--info hit-die" id="monster-card--text">Hit Die:</div>
+                            <div class="card__infos--info type" id="monster-card--text">Type:</div>
+                            <div class="card__infos--info size" id="monster-card--text">Size:</div>
+                            <div class="card__infos--info alignment" id="monster-card--text">alignment:</div>
+                        </div>
+                    </div>
+                    <div class="card__btn">
+                        <a href="#" class="card__btn--text">view Aboleth detail</a>
+                    </div>
+                </div> -->
+
+
+
+            </div>
+            <div class="overlay" id="overlay"></div>
+        </div>
+    </main>
+</body>
+
+</html>

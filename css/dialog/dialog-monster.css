@@ -1,0 +1,274 @@
+body {
+    height: 100vh;
+    width: 100vw;
+}
+
+.modal-monster {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    z-index: -1;
+    height: fit-content;
+    min-width: 480px;
+    width: fit-content;
+    border: 1px solid var(--cor-card);
+    background: var(--cor-card);
+    border-radius: 10px;
+    box-shadow: 1px 1px 20px var(--cor-preta-claro);
+}
+
+.modal-monster:focus {
+    outline: none;
+}
+
+.active {
+    opacity: 1;
+    z-index: 2;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    /* animation-name: slide;
+    animation-duration: 0.5s; */
+}
+
+@keyframes slide {
+    from {
+        top: 0%;
+        opacity: 0.1;
+    }
+
+    to {
+        top: 50%;
+        transform: translateY(50%);
+        opacity: 1;
+    }
+}
+
+.modal-monster__container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 5%;
+    max-width: 600px;
+    height: fit-content;
+    gap: 10px;
+}
+
+.container__title {
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container__title h2 {
+    height: fit-content;
+    width: 100%;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.container__title p {
+    height: fit-content;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--cor-preto);
+}
+
+.container__life-armor, .container__infos, .container__abilities {
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.container__life-armor--item, .container__infos-info, .container__abilities-ability {
+    height: fit-content;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--cor-preto);
+}
+
+.container__abilities-ability p {
+    margin-bottom: 5px;
+}
+
+.container__status {
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.container__status__status {
+    height: fit-content;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.container__status__status--name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--cor-preto);
+}
+
+.container__status__status--value {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--cor-preto);
+}
+
+.linha {
+    height: 2px;
+    width: 100%;
+}
+
+.aberration {
+    background-color: #E091FE;
+}
+
+.aberration-title {
+    color: #E091FE;
+}
+
+.beast {
+    background-color: #A487B7;
+}
+
+.beast-title {
+    color: #A487B7;
+}
+
+.celestial {
+    background-color: #FEFE9C;
+}
+
+.celestial-title {
+    color: #FEFE9C;
+}
+
+.construct {
+    background-color: #F1C374;
+}
+
+.construct-title {
+    color: #F1C374;
+}
+
+.dragon {
+    background-color: #DA5054;
+}
+
+.dragon-title {
+    color: #DA5054;
+}
+
+.elemental {
+    background-color: #72F2FF;
+}
+
+.elemental-title {
+    color: #72F2FF;
+}
+
+.fey {
+    background-color: #93FCD8;
+}
+
+.fey-title {
+    color: #93FCD8;
+}
+
+.fiend {
+    background-color: #ec784a;
+}
+
+.fiend-title {
+    color: #ec784a;
+}
+
+.giant {
+    background-color: #E091FE;
+}
+
+.giant-title {
+    color: #E091FE;
+}
+
+.humanoid {
+    background-color: #b3c0c4;
+}
+
+.humanoid-title {
+    color: #b3c0c4;
+}
+
+.monstrosity {
+    background-color: #7396EC;
+}
+
+.monstrosity-title {
+    color: #7396EC;
+}
+
+.ooze {
+    background-color: #A1EAF1;
+}
+
+.ooze-title {
+    color: #A1EAF1;
+}
+
+.plant {
+    background-color: #69BE63;
+}
+
+.plant-title {
+    color: #69BE63;
+}
+
+.undead {
+    background-color: #C67C5B;
+}
+
+.undead-title {
+    color: #C67C5B;
+}
+
+.button-close {
+    height: 40px;
+    display: grid;
+    place-items: center;
+    place-self: end;
+    background-color: var(--cor-vermelho);
+    padding: 6px 34px;
+    border-radius: 5px;
+    color: var(--cor-branco);
+    border: none;
+    font-size: 1rem;
+}
+
+.button-close:focus {
+    outline: none;
+}
+
+.button-close:hover {
+    cursor: pointer;
+    background-color: var(--cor-azul-cinza);
+    transition: 0.25s;
+}

@@ -1,26 +1,111 @@
-<div class="container">
-    <title-name title_name="Raças"></title-name>
-    <div class="container__container" id="container-raca">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/color.css">
+    <link rel="stylesheet" href="../css/loading.css">
+    <link rel="stylesheet" href="../css/content-card.css">
+    <link rel="stylesheet" href="../css/dialog/dialog-race.css">
+    <script src="../js/router.js" defer type="module"></script>
+    <script src="../js/api/api-raca.js" defer type="module"></script>
+    <script src="../js/scripts/card-raca.js" defer type="module"></script>
+    <script src="../js/components/title.js" defer type="module"></script>
+    <script src="../js/components/cardRaca.js" defer></script>
+    <script src="https://kit.fontawesome.com/be4450fc4f.js" crossorigin="anonymous"></script>
+    <title>Dungeons & Dragons</title>
+</head>
+<body>
+    <header>
 
-        <!-- <div class="card">
-            <div class="card__title">
-                <p class="card__title--title">
-                    Dragonborn
-                </p>
+        <div class="header">
+            <a href="/" onclick="route()" class="header__logo">
+                <h3 class="header__logo--title">
+                    DUNGEONS&DRAGONS
+                </h3>
+                <img src="../img/icon-dnd-red-removebg-preview.png" alt="icone 'e' comercial semelhante a um dragão">
+            </a>
+            <div class="header__redes">
+                <a href="">
+                    <i class="fab fa-discord"></i>
+                </a>
+                <a href="">
+                    <i class="fab fa-twitch"></i>
+                </a>
+                <a href="">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="">
+                    <i class="fab fa-facebook-square"></i>
+                </a>
+                <a href="">
+                    <i class="fab fa-twitter"></i>
+                </a>
             </div>
-            <span class="card__description">
-                Dragonborn look very much like dragons standing erect in humanoid form, though they lack wings or a tail.
-            </span>
-            <div class="card__infos">
-                <div class="card__infos--info racial-traits">Racial Traits:</div>
-                <span class="card__description">
-                    +2 Strength, +1 Charisma, Draconic Ancestry, Breath Weapon, Damage Resistance
-                </span>
-            </div>
-            <div class="card__btn">
-                <a href="#" class="card__btn--text">view Dragonborn detail</a>
-            </div>
-        </div> -->
+        </div>
 
-    </div>
-</div>
+        <nav class="menu-container">
+            <a href="/" onclick="route()">HOME</a>
+            <a href="/classes" onclick="route()">CLASSES</a>
+            <a href="/racas" onclick="route()">RAÇAS</a>
+            <a href="/monstros" onclick="route()">MONSTROS</a>
+        </nav>
+
+    </header>
+    <main>
+        <section class="loading-screen">
+            <div>
+                <div>
+                    <span class="one h6"></span>
+                    <span class="two h3"></span>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <span class="one h1"></span>
+                    <span class="two h4"></span>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <span class="one h5"></span>
+                    <span class="two h2"></span>
+                </div>
+            </div>
+        </section>
+        <div class="container">
+            <title-name title_name="Raças"></title-name>
+            <div class="container__container" id="container-raca">
+        
+                <!-- <div class="card">
+                    <div class="card__title">
+                        <p class="card__title--title">
+                            Dragonborn
+                        </p>
+                    </div>
+                    <span class="card__description">
+                        Dragonborn look very much like dragons standing erect in humanoid form, though they lack wings or a tail.
+                    </span>
+                    <div class="card__infos">
+                        <div class="card__infos--info racial-traits">Racial Traits:</div>
+                        <span class="card__description">
+                            +2 Strength, +1 Charisma, Draconic Ancestry, Breath Weapon, Damage Resistance
+                        </span>
+                    </div>
+                    <div class="card__btn">
+                        <a href="#" class="card__btn--text">view Dragonborn detail</a>
+                    </div>
+                </div> -->
+        
+            </div>
+            <div class="overlay" id="overlay"></div>
+        </div>
+    </main>
+</body>
+</html>

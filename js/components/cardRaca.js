@@ -166,14 +166,39 @@ class CardRaca extends HTMLElement {
     traits.classList.add('traits')
     traits.textContent = `Racial Traits: ${this.traits}`
 
-    
-
-    // const racialDesc = document.createElement('span')
-    // racialDesc.classList.add('card__description')
-    // racialDesc.textContent = this.racial_description
-
     const cardBtn = document.createElement('div')
     cardBtn.classList.add('card__btn')
+    cardBtn.addEventListener('click', (e) => {
+        const modals = document.querySelectorAll('.modal-race')
+        modals.forEach(modal => {
+            if (modal.getAttribute('id') == this.titulo) {
+                e.preventDefault()
+
+                const overlay = document.getElementById('overlay')
+                modal.classList.add('active')
+                overlay.style.display = 'block'
+                document.body.style.overflow = 'hidden'
+
+                const body = document.querySelector('body')
+                    const bodyH = body.offsetHeight
+                    
+                    let windowHeight = window.scrollY;
+                    let modalHeight = modal.offsetHeight + 50;
+                    let modalTop = 0
+                    if(windowHeight >= (bodyH / 2)) {
+                        modalTop = (bodyH + (bodyH / 3))
+                        windowHeight = window.scrollTo(0, ((modalTop / 2) + 120))
+                        console.log(modalTop);
+                        console.log('uiui');
+                    } else {
+                        modalTop = windowHeight + (modalHeight / 2);
+                        console.log(modalTop);
+                    }
+                    modal.style.top = `${modalTop}px`;
+            }
+        })
+
+    })
 
     const btnLink = document.createElement('a')
     btnLink.classList.add('card__btn--text')

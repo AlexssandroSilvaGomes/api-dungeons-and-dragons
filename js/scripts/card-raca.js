@@ -164,7 +164,19 @@ export const carregarCardRaca = () => {
 const reload = document.querySelector('.loading-screen')
 const container = document.querySelector('.container')
 
-if (location.href == 'http://127.0.0.1:5500/pages/racas.html') {
+// //local
+// if (location.href == 'http://127.0.0.1:5500/pages/racas.html') {
+//     reload.style.display = 'flex'
+//     container.style.display = 'none'
+//     setTimeout(() => {
+//         reload.style.display = 'none'
+//         container.style.display = 'grid'
+//     }, 2000)
+//     carregarCardRaca()
+// }
+
+//online
+if (location.href == 'https://dungeonanddragons.netlify.app/pages/racas.html') {
     reload.style.display = 'flex'
     container.style.display = 'none'
     setTimeout(() => {

@@ -344,7 +344,18 @@ export const carregarCardMonstro = () => {
 const reload = document.querySelector('.loading-screen')
 const container = document.querySelector('.container')
 
-if (location.href == 'http://127.0.0.1:5500/pages/monstros.html') {
+//local
+// if (location.href == 'http://127.0.0.1:5500/pages/monstros.html') {
+//     reload.style.display = 'flex'
+//     container.style.display = 'none'
+//     setTimeout(() => {
+//         reload.style.display = 'none'
+//         container.style.display = 'grid'
+//     }, 2000)
+//     carregarCardMonstro()
+// }
+
+if (location.href == 'https://dungeonanddragons.netlify.app/monstros.html') {
     reload.style.display = 'flex'
     container.style.display = 'none'
     setTimeout(() => {

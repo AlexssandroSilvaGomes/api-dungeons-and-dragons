@@ -355,7 +355,7 @@ const container = document.querySelector('.container')
 //     carregarCardMonstro()
 // }
 
-if (location.href == 'https://dungeonanddragons.netlify.app/monstros.html') {
+if (location.href == 'https://dungeonanddragons.netlify.app/pages/monstros.html') {
     reload.style.display = 'flex'
     container.style.display = 'none'
     setTimeout(() => {

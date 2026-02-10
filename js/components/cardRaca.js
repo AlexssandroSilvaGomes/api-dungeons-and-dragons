@@ -3,7 +3,7 @@
 class CardRaca extends HTMLElement {
     constructor() {
         super()
-        this.shadow = this.attachShadow({mode:'open'})
+        this.shadow = this.attachShadow({ mode: 'open' })
         this.titulo = 'Dragonborn'
         this.size = 'Medium'
         this.languages = 'common, draconic'
@@ -13,15 +13,15 @@ class CardRaca extends HTMLElement {
         this.foto = '../img/img_racas/dragonborn.png'
     }
 
-    static get observedAttributes(){
-        return['titulo', 'size', 'languages', 'ability_bonuses', 'traits', 'btn_title', 'foto']
+    static get observedAttributes() {
+        return ['titulo', 'size', 'languages', 'ability_bonuses', 'traits', 'btn_title', 'foto']
     }
 
-    attributeChangedCallback(nameAttr, oldValue, newValue){
+    attributeChangedCallback(nameAttr, oldValue, newValue) {
         this[nameAttr] = newValue
     }
 
-    connectedCallback(){
+    connectedCallback() {
         this.shadow.appendChild(this.component())
         this.shadow.appendChild(this.style())
     }
@@ -40,7 +40,8 @@ class CardRaca extends HTMLElement {
         }
 
         .card {
-            width: 370px;
+            width: 100%;
+            max-width: 370px;
             height: fit-content;
             min-height: 360px;
             display: flex;
@@ -60,6 +61,7 @@ class CardRaca extends HTMLElement {
         
         .card__detail {
             height: fit-content;
+            width: 100%;
             max-width: 270px;
             display: flex;
             justify-content: flex-start;
@@ -124,68 +126,94 @@ class CardRaca extends HTMLElement {
             font-size: 1.25rem;
             color: var(--cor-branco);
         }
+
+        @media (max-width: 700px) {
+            .card {
+                max-width: 100%;
+                min-height: 320px;
+                padding: 24px 12px 50px 12px;
+                background-size: 70%;
+                background-position: 120% 0%;
+            }
+
+            .card__detail {
+                max-width: 100%;
+            }
+
+            .card__title--title {
+                font-size: 1.4rem;
+            }
+
+            .card__infos--info {
+                font-size: 0.7rem;
+            }
+
+            .card__btn--text {
+                font-size: 1rem;
+            }
+        }
         `
 
         return style
     }
 
     component() {
-    const card = document.createElement('div')
-    card.classList.add('card')
-    
-    const detail = document.createElement('div')
-    detail.classList.add('card__detail')
+        const card = document.createElement('div')
+        card.classList.add('card')
 
-    const titleContainer = document.createElement('div')
-    titleContainer.classList.add('card__title')
+        const detail = document.createElement('div')
+        detail.classList.add('card__detail')
 
-    const title = document.createElement('p')
-    title.classList.add('card__title--title')
-    title.textContent = this.titulo
+        const titleContainer = document.createElement('div')
+        titleContainer.classList.add('card__title')
 
-    const cardInfo = document.createElement('div')
-    cardInfo.classList.add('card__infos')
+        const title = document.createElement('p')
+        title.classList.add('card__title--title')
+        title.textContent = this.titulo
 
-    const size = document.createElement('div')
-    size.classList.add('card__infos--info')
-    size.classList.add('size')
-    size.textContent = `Size: ${this.size}`
+        const cardInfo = document.createElement('div')
+        cardInfo.classList.add('card__infos')
 
-    const languages = document.createElement('div')
-    languages.classList.add('card__infos--info')
-    languages.classList.add('languages')
-    languages.textContent = `Languages: ${this.languages}`
+        const size = document.createElement('div')
+        size.classList.add('card__infos--info')
+        size.classList.add('size')
+        size.textContent = `Size: ${this.size}`
 
-    const abilityBonuses = document.createElement('div')
-    abilityBonuses.classList.add('card__infos--info')
-    abilityBonuses.classList.add('ability-bonuses')
-    abilityBonuses.textContent = `Ability Bonuses: ${this.ability_bonuses}`
+        const languages = document.createElement('div')
+        languages.classList.add('card__infos--info')
+        languages.classList.add('languages')
+        languages.textContent = `Languages: ${this.languages}`
 
-    const traits = document.createElement('div')
-    traits.classList.add('card__infos--info')
-    traits.classList.add('traits')
-    traits.textContent = `Racial Traits: ${this.traits}`
+        const abilityBonuses = document.createElement('div')
+        abilityBonuses.classList.add('card__infos--info')
+        abilityBonuses.classList.add('ability-bonuses')
+        abilityBonuses.textContent = `Ability Bonuses: ${this.ability_bonuses}`
 
-    const cardBtn = document.createElement('div')
-    cardBtn.classList.add('card__btn')
-    cardBtn.addEventListener('click', (e) => {
-        const modals = document.querySelectorAll('.modal-race')
-        modals.forEach(modal => {
-            if (modal.getAttribute('id') == this.titulo) {
-                e.preventDefault()
+        const traits = document.createElement('div')
+        traits.classList.add('card__infos--info')
+        traits.classList.add('traits')
+        traits.textContent = `Racial Traits: ${this.traits}`
 
-                const overlay = document.getElementById('overlay')
-                modal.classList.add('active')
-                overlay.style.display = 'block'
-                document.body.style.overflow = 'hidden'
+        const cardBtn = document.createElement('div')
+        cardBtn.classList.add('card__btn')
+        cardBtn.addEventListener('click', (e) => {
+            const modals = document.querySelectorAll('.modal-race')
+            modals.forEach(modal => {
+                if (modal.getAttribute('id') == this.titulo) {
+                    e.preventDefault()
 
-                const body = document.querySelector('body')
+                    const overlay = document.getElementById('overlay')
+                    modal.classList.add('active')
+                    overlay.style.display = 'block'
+                    document.body.style.overflow = 'hidden'
+
+                    const body = document.querySelector('body')
                     const bodyH = body.offsetHeight
-                    
+
                     let windowHeight = window.scrollY;
                     let modalHeight = modal.offsetHeight + 50;
                     let modalTop = 0
-                    if(windowHeight >= (bodyH / 2)) {
+                    if (windowHeight >= (bodyH / 2)) {
                         modalTop = (bodyH + (bodyH / 3))
                         windowHeight = window.scrollTo(0, ((modalTop / 2) + 120))
                         console.log(modalTop);
@@ -195,25 +223,25 @@ class CardRaca extends HTMLElement {
                         console.log(modalTop);
                     }
                     modal.style.top = `${modalTop}px`;
-            }
+                }
+            })
+
         })
 
-    })
+        const btnLink = document.createElement('a')
+        btnLink.classList.add('card__btn--text')
+        btnLink.href = '#'
+        btnLink.textContent = `view ${this.btn_title} detail`
 
-    const btnLink = document.createElement('a')
-    btnLink.classList.add('card__btn--text')
-    btnLink.href = '#'
-    btnLink.textContent = `view ${this.btn_title} detail`
+        card.append(detail, cardBtn)
+        detail.append(titleContainer, cardInfo)
+        titleContainer.append(title)
+        cardInfo.append(size, languages, abilityBonuses, traits)
+        cardBtn.append(btnLink)
 
-    card.append(detail, cardBtn)
-    detail.append(titleContainer, cardInfo)
-    titleContainer.append(title)
-    cardInfo.append(size, languages, abilityBonuses, traits)
-    cardBtn.append(btnLink)
-
-    return card
+        return card
     }
-   
+
 
 }
 

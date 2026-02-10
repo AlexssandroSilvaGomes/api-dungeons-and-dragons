@@ -265,25 +265,20 @@ export const carregarCardClasse = () => {
 const reload = document.querySelector('.loading-screen')
 const container = document.querySelector('.container')
 
-//local
-// if (location.href == 'http://127.0.0.1:5500/pages/classes.html') {
-//     reload.style.display = 'flex'
-//     container.style.display = 'none'
-//     setTimeout(() => {
-//         reload.style.display = 'none'
-//         container.style.display = 'grid'
-//     }, 2000)
-//     carregarCardClasse()
-
-// }
-
-if (location.href == 'https://dungeonanddragons.netlify.app/pages/classes.html') {
+const mostrarLoading = () => {
     reload.style.display = 'flex'
     container.style.display = 'none'
-    setTimeout(() => {
-        reload.style.display = 'none'
-        container.style.display = 'grid'
-    }, 2000)
-    carregarCardClasse()
+}
 
+const esconderLoading = () => {
+    reload.style.display = 'none'
+    container.style.display = 'grid'
+}
+
+const isPaginaClasses = location.href.includes('classes.html')
+
+if (isPaginaClasses) {
+    mostrarLoading()
+    carregarCardClasse()
+    requestAnimationFrame(esconderLoading)
 }

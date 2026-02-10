@@ -1,11 +1,11 @@
-a{
+a {
     text-decoration: none;
 }
 
 .dialog-class {
     position: absolute;
-    top:50%;
-    left:50%;
+    top: 50%;
+    left: 50%;
     opacity: 0;
     z-index: -1;
     height: fit-content;
@@ -14,6 +14,9 @@ a{
     background-color: var(--cor-card);
     border-radius: 20px;
     box-shadow: 1px 1px 20px var(--cor-preta-claro);
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 .dialog-class:focus {
@@ -30,8 +33,16 @@ a{
 }
 
 @keyframes slide {
-    from { top: 0%; opacity: 0.1;}
-    to { top: 50%; transform: translateY(50%); opacity: 1;}
+    from {
+        top: 0%;
+        opacity: 0.1;
+    }
+
+    to {
+        top: 50%;
+        transform: translateY(50%);
+        opacity: 1;
+    }
 }
 
 .dialog-class__container {
@@ -68,7 +79,7 @@ a{
     width: 100%;
     height: fit-content;
     gap: .75rem;
-    
+
 }
 
 .container__feature--subtitle {
@@ -127,11 +138,12 @@ a{
 
 .container__hit-points--infos-infos span {
     width: fit-content;
-    height: 100%;   
+    height: 100%;
     font-size: 1rem;
     font-weight: 700;
     color: var(--cor-preto);
 }
+
 .container__hit-points--infos-infos p {
     flex: 1;
     height: 100%;
@@ -147,7 +159,7 @@ a{
     align-items: flex-start;
     flex-direction: column;
     width: 100%;
-    height: fit-content;    
+    height: fit-content;
 }
 
 .container__proficiencies--title {
@@ -180,7 +192,7 @@ a{
 
 .container__proficiencies--infos-infos span {
     width: fit-content;
-    height: 100%;   
+    height: 100%;
     font-size: 1rem;
     font-weight: 700;
     color: var(--cor-preto);
@@ -213,7 +225,9 @@ a{
     margin-bottom: .75rem;
 }
 
-.container__equipment--infos, .container__equipment--infos-desc, .container__equipment--infos-infos {
+.container__equipment--infos,
+.container__equipment--infos-desc,
+.container__equipment--infos-infos {
     font-size: 1rem;
     font-weight: 300;
     width: 100%;
@@ -223,7 +237,7 @@ a{
 
 ul {
     padding-left: 2.5rem;
-}    
+}
 
 .button-close {
     height: 40px;
@@ -246,4 +260,57 @@ ul {
     cursor: pointer;
     background-color: var(--cor-azul-cinza);
     transition: 0.25s;
+}
+
+@media (max-width: 900px) {
+    .dialog-class {
+        width: 92vw;
+    }
+
+    .dialog-class__container {
+        padding: 20px;
+    }
+
+    .container__title--title {
+        font-size: 1.6rem;
+    }
+
+    .container__feature--subtitle,
+    .container__hit-points--title,
+    .container__proficiencies--title,
+    .container__equipment--title {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .dialog-class {
+        position: fixed;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+    }
+
+    .container__feature--subtitle,
+    .container__hit-points--title,
+    .container__proficiencies--title,
+    .container__equipment--title {
+        font-size: 1.1rem;
+    }
+
+    .contaner__feature--desc,
+    .container__hit-points--infos-infos span,
+    .container__hit-points--infos-infos p,
+    .container__proficiencies--infos-infos span,
+    .container__proficiencies--infos-infos p,
+    .container__equipment--infos,
+    .container__equipment--infos-desc,
+    .container__equipment--infos-infos {
+        font-size: 0.95rem;
+    }
+
+    .button-close {
+        width: 100%;
+        place-self: stretch;
+    }
 }

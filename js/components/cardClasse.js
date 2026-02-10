@@ -39,7 +39,8 @@ class CardClasse extends HTMLElement {
         }
 
         .card {
-            width: 370px;
+            width: 100%;
+            max-width: 370px;
             height: fit-content;
             min-height: 360px;
             display: flex;
@@ -59,6 +60,7 @@ class CardClasse extends HTMLElement {
         
         .card__detail {
             height: fit-content;
+            width: 100%;
             max-width: 270px;
             display: flex;
             justify-content: flex-start;
@@ -123,6 +125,32 @@ class CardClasse extends HTMLElement {
             font-size: 1.25rem;
             color: var(--cor-branco);
         }
+
+        @media (max-width: 700px) {
+            .card {
+                max-width: 100%;
+                min-height: 320px;
+                padding: 24px 12px 50px 12px;
+                background-size: 70%;
+                background-position: 120% 0%;
+            }
+
+            .card__detail {
+                max-width: 100%;
+            }
+
+            .card__title--title {
+                font-size: 1.4rem;
+            }
+
+            .card__infos--info {
+                font-size: 0.7rem;
+            }
+
+            .card__btn--text {
+                font-size: 1rem;
+            }
+        }
         `
 
         return style
@@ -175,11 +203,11 @@ class CardClasse extends HTMLElement {
 
                     const body = document.querySelector('body')
                     const bodyH = body.offsetHeight
-                    
+
                     let windowHeight = window.scrollY;
                     let modalHeight = modal.offsetHeight + 50;
                     let modalTop = 0
-                    if(windowHeight >= (bodyH + (bodyH / 3))) {
+                    if (windowHeight >= (bodyH + (bodyH / 3))) {
                         modalTop = (bodyH + (bodyH / 3))
                         windowHeight = window.scrollTo(0, ((modalTop / 2) + 120))
                         console.log(modalTop);

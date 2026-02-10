@@ -1,8 +1,3 @@
-body {
-    height: 100vh;
-    width: 100vw;
-}
-
 .modal-monster {
     position: absolute;
     top: 50%;
@@ -16,6 +11,9 @@ body {
     background: var(--cor-card);
     border-radius: 10px;
     box-shadow: 1px 1px 20px var(--cor-preta-claro);
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 .modal-monster:focus {
@@ -79,7 +77,9 @@ body {
     color: var(--cor-preto);
 }
 
-.container__life-armor, .container__infos, .container__abilities {
+.container__life-armor,
+.container__infos,
+.container__abilities {
     height: fit-content;
     width: 100%;
     display: flex;
@@ -89,7 +89,9 @@ body {
     gap: 5px;
 }
 
-.container__life-armor--item, .container__infos-info, .container__abilities-ability {
+.container__life-armor--item,
+.container__infos-info,
+.container__abilities-ability {
     height: fit-content;
     width: 100%;
     font-size: 1rem;
@@ -271,4 +273,51 @@ body {
     cursor: pointer;
     background-color: var(--cor-azul-cinza);
     transition: 0.25s;
+}
+
+@media (max-width: 900px) {
+    .modal-monster {
+        min-width: unset;
+        width: 92vw;
+    }
+
+    .modal-monster__container {
+        max-width: none;
+        padding: 20px;
+    }
+
+    .container__title h2 {
+        font-size: 1.6rem;
+    }
+
+    .container__status {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+}
+
+@media (max-width: 600px) {
+    .modal-monster {
+        position: fixed;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: 94vw;
+    }
+
+    .container__title h2 {
+        font-size: 1.4rem;
+    }
+
+    .container__title p,
+    .container__life-armor--item,
+    .container__infos-info,
+    .container__abilities-ability {
+        font-size: 0.95rem;
+    }
+
+    .button-close {
+        width: 100%;
+        place-self: stretch;
+    }
 }

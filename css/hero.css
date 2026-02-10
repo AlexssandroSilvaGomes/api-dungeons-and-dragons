@@ -47,9 +47,17 @@
 }
 
 @keyframes diceRoll {
-    0% { transform: scale(1.2) ease-in; }
-    25% { transform: scale(1.2) rotate(20deg); }
-    100% {transform: scale(1) rotate(-360deg); }
+    0% {
+        transform: scale(1.2) ease-in;
+    }
+
+    25% {
+        transform: scale(1.2) rotate(20deg);
+    }
+
+    100% {
+        transform: scale(1) rotate(-360deg);
+    }
 }
 
 .hero__img {
@@ -67,5 +75,70 @@
     animation-iteration-count: infinite;
 }
 
+@media (max-width: 1024px) {
+    .hero {
+        gap: 60px;
+        padding: 0 20px;
+    }
 
+    .hero__content--title {
+        font-size: 2.5rem;
+    }
 
+    .hero__content--description {
+        font-size: 1.2rem;
+    }
+
+    .hero__content--btn {
+        width: 320px;
+        height: 64px;
+        font-size: 1.25rem;
+    }
+
+    .hero__img {
+        height: 340px;
+    }
+}
+
+@media (max-width: 820px) {
+    .hero {
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .hero__content {
+        align-items: center;
+    }
+
+    .hero__content--description {
+        padding-bottom: 2rem;
+    }
+
+    .hero__img {
+        height: 280px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero__content--title {
+        font-size: 2rem;
+    }
+
+    .hero__content--description {
+        font-size: 1rem;
+    }
+
+    .hero__content--btn {
+        width: 100%;
+        max-width: 280px;
+        height: 56px;
+        font-size: 1.1rem;
+    }
+
+    .hero__img {
+        height: 220px;
+    }
+}

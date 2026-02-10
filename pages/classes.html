@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,6 +22,7 @@
     <script src="https://kit.fontawesome.com/be4450fc4f.js" crossorigin="anonymous"></script>
     <title>Dungeons & Dragons</title>
 </head>
+
 <body>
     <header>
 
@@ -48,13 +50,36 @@
                     <i class="fab fa-twitter"></i>
                 </a>
             </div>
+            <label for="nav-toggle" class="menu-toggle" aria-label="Abrir menu">
+                <span class="menu-toggle__bar"></span>
+                <span class="menu-toggle__bar"></span>
+                <span class="menu-toggle__bar"></span>
+            </label>
         </div>
 
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
         <nav class="menu-container">
             <a href="/" onclick="route()">HOME</a>
             <a href="/classes" onclick="route()">CLASSES</a>
             <a href="/racas" onclick="route()">RAÇAS</a>
             <a href="/monstros" onclick="route()">MONSTROS</a>
+            <div class="menu-social">
+                <a href="">
+                    <i class="fab fa-discord"></i>
+                </a>
+                <a href="">
+                    <i class="fab fa-twitch"></i>
+                </a>
+                <a href="">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="">
+                    <i class="fab fa-facebook-square"></i>
+                </a>
+                <a href="">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
         </nav>
 
     </header>
@@ -85,9 +110,9 @@
         <div class="container">
 
             <title-name title_name="Classes"></title-name>
-        
+
             <div class="container__container" id="container-classe">
-        
+
                 <!-- <div class="card">
                     <div class="card__title">
                         <p class="card__title--title">
@@ -106,9 +131,9 @@
                         <a href="#" class="card__btn--text">view Barbarian detail</a>
                     </div>
                 </div> -->
-        
-                
-        
+
+
+
             </div>
 
             <div class="overlay" id="overlay"></div>
@@ -116,4 +141,5 @@
 
     </main>
 </body>
+
 </html>

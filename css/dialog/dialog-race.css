@@ -1,7 +1,7 @@
 .modal-race {
     position: absolute;
-    top:50%;
-    left:50%;
+    top: 50%;
+    left: 50%;
     opacity: 0;
     z-index: -1;
     height: fit-content;
@@ -10,6 +10,9 @@
     background: var(--cor-card);
     border-radius: 10px;
     box-shadow: 1px 1px 20px var(--cor-preta-claro);
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 .modal-race:focus {
@@ -26,8 +29,16 @@
 }
 
 @keyframes slide {
-    from { top: 0%; opacity: 0.1;}
-    to { top: 50%; transform: translateY(50%); opacity: 1;}
+    from {
+        top: 0%;
+        opacity: 0.1;
+    }
+
+    to {
+        top: 50%;
+        transform: translateY(50%);
+        opacity: 1;
+    }
 }
 
 .modal-race__container {
@@ -124,4 +135,47 @@
     cursor: pointer;
     background-color: var(--cor-azul-cinza);
     transition: 0.25s;
+}
+
+@media (max-width: 900px) {
+    .modal-race {
+        width: 92vw;
+    }
+
+    .modal-race__container {
+        max-width: none;
+        padding: 20px;
+    }
+
+    .container__title {
+        font-size: 1.6rem;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 600px) {
+    .modal-race {
+        position: fixed;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+    }
+
+    .container__title {
+        font-size: 1.4rem;
+    }
+
+    .container__title-traits--title {
+        font-size: 1.2rem;
+    }
+
+    .container__title-traits--desc,
+    .container__traits-trait {
+        font-size: 0.95rem;
+    }
+
+    .button-close {
+        width: 100%;
+        place-self: stretch;
+    }
 }

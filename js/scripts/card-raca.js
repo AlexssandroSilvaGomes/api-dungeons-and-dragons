@@ -117,7 +117,7 @@ const criaModalRaca = (raca) => {
     containerTraitsTraits.classList.add('container__traits-trait')
     containerTraitsTraits.classList.add('traits')
     const containerTraitsTraitsP = document.createElement('p')
-    if(traitsArray.length < 1) {
+    if (traitsArray.length < 1) {
         traitsArray.push('none')
     }
     containerTraitsTraitsP.innerHTML = `<b>Traits: </b>${traitsArray.join(', ')}`
@@ -164,24 +164,20 @@ export const carregarCardRaca = () => {
 const reload = document.querySelector('.loading-screen')
 const container = document.querySelector('.container')
 
-// //local
-// if (location.href == 'http://127.0.0.1:5500/pages/racas.html') {
-//     reload.style.display = 'flex'
-//     container.style.display = 'none'
-//     setTimeout(() => {
-//         reload.style.display = 'none'
-//         container.style.display = 'grid'
-//     }, 2000)
-//     carregarCardRaca()
-// }
-
-//online
-if (location.href == 'https://dungeonanddragons.netlify.app/pages/racas.html') {
+const mostrarLoading = () => {
     reload.style.display = 'flex'
     container.style.display = 'none'
-    setTimeout(() => {
-        reload.style.display = 'none'
-        container.style.display = 'grid'
-    }, 2000)
+}
+
+const esconderLoading = () => {
+    reload.style.display = 'none'
+    container.style.display = 'grid'
+}
+
+const isPaginaRacas = location.href.includes('racas.html')
+
+if (isPaginaRacas) {
+    mostrarLoading()
     carregarCardRaca()
+    requestAnimationFrame(esconderLoading)
 }

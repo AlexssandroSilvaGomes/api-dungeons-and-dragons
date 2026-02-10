@@ -1,6 +1,11 @@
-import { pegarNomeMonstros } from '../api/api-monstros.js'
-const monstros = await pegarNomeMonstros()
-console.log(monstros);
+import { pegarMonstrosPagina } from '../api/api-monstros.js'
+
+const PAGE_SIZE = 9
+const state = {
+    currentPage: 1,
+    totalPages: 1,
+    isLoading: false
+}
 
 const criaCardMonstro = (monstro) => {
 
@@ -248,11 +253,18 @@ const criaModalMonstro = (monstro) => {
     const containerAbilitiesAbility = document.createElement('div')
     containerAbilitiesAbility.classList.add('container__abilities-ability')
 
-    monstro.special_abilities.forEach(ability => {
+    const specialAbilities = monstro.special_abilities || []
+    if (specialAbilities.length === 0) {
         const containerAbilitiesAbilityP = document.createElement('p')
-        containerAbilitiesAbilityP.innerHTML = `<b>${ability.name}: </b>${ability.desc}`
+        containerAbilitiesAbilityP.innerHTML = '<b>Special Abilities: </b>none'
         containerAbilitiesAbility.append(containerAbilitiesAbilityP)
-    })
+    } else {
+        specialAbilities.forEach(ability => {
+            const containerAbilitiesAbilityP = document.createElement('p')
+            containerAbilitiesAbilityP.innerHTML = `<b>${ability.name}: </b>${ability.desc}`
+            containerAbilitiesAbility.append(containerAbilitiesAbilityP)
+        })
+    }
 
     const btnClose = document.createElement('button')
     btnClose.classList.add('button-close')
@@ -285,7 +297,7 @@ const criaModalMonstro = (monstro) => {
     containerInfosLanguages.append(containerInfosLanguagesP)
     containerInfosChallenge.append(containerInfosChallengeP)
     containerAbilities.append(containerAbilitiesAbility)
-    
+
 
     return modalMonster
 
@@ -327,40 +339,88 @@ const tabelaAtributos = (atributo) => {
     }
 }
 
-export const carregarCardMonstro = () => {
-    const container = document.getElementById('container-monstro')
-    let newMonstrosArray = []
-    monstros.forEach(monstros => {
-        if (monstros.image != undefined) {
-            newMonstrosArray.push(monstros)
-        }
-    })
-    newMonstrosArray.forEach(monstro => {
-        container.append(criaCardMonstro(monstro), criaModalMonstro(monstro))
-    })
-    console.log(newMonstrosArray);
-}
-
 const reload = document.querySelector('.loading-screen')
 const container = document.querySelector('.container')
+const containerMonstro = document.getElementById('container-monstro')
 
-//local
-// if (location.href == 'http://127.0.0.1:5500/pages/monstros.html') {
-//     reload.style.display = 'flex'
-//     container.style.display = 'none'
-//     setTimeout(() => {
-//         reload.style.display = 'none'
-//         container.style.display = 'grid'
-//     }, 2000)
-//     carregarCardMonstro()
-// }
-
-if (location.href == 'https://dungeonanddragons.netlify.app/pages/monstros.html') {
+const mostrarLoading = () => {
     reload.style.display = 'flex'
     container.style.display = 'none'
-    setTimeout(() => {
-        reload.style.display = 'none'
-        container.style.display = 'grid'
-    }, 2000)
-    carregarCardMonstro()
+}
+
+const esconderLoading = () => {
+    reload.style.display = 'none'
+    container.style.display = 'grid'
+}
+
+const limparMonstros = () => {
+    containerMonstro.innerHTML = ''
+}
+
+const renderMonstros = (listaMonstros) => {
+    const monstrosComImagem = listaMonstros.filter(monstro => monstro.image != undefined)
+    monstrosComImagem.forEach(monstro => {
+        containerMonstro.append(criaCardMonstro(monstro), criaModalMonstro(monstro))
+    })
+}
+
+const garantirPaginacao = () => {
+    let paginacao = document.querySelector('.pagination')
+    if (!paginacao) {
+        paginacao = document.createElement('div')
+        paginacao.classList.add('pagination')
+        const overlay = document.getElementById('overlay')
+        if (overlay) {
+            container.insertBefore(paginacao, overlay)
+        } else {
+            container.append(paginacao)
+        }
+    }
+    return paginacao
+}
+
+const renderPaginacao = () => {
+    const paginacao = garantirPaginacao()
+    paginacao.innerHTML = ''
+
+    const botaoAnterior = document.createElement('button')
+    botaoAnterior.classList.add('pagination__btn')
+    botaoAnterior.textContent = 'Prev'
+    botaoAnterior.disabled = state.currentPage <= 1 || state.isLoading
+    botaoAnterior.addEventListener('click', () => carregarPagina(state.currentPage - 1))
+
+    const info = document.createElement('span')
+    info.classList.add('pagination__info')
+    info.textContent = `Pagina ${state.currentPage} de ${state.totalPages}`
+
+    const botaoProximo = document.createElement('button')
+    botaoProximo.classList.add('pagination__btn')
+    botaoProximo.textContent = 'Next'
+    botaoProximo.disabled = state.currentPage >= state.totalPages || state.isLoading
+    botaoProximo.addEventListener('click', () => carregarPagina(state.currentPage + 1))
+
+    paginacao.append(botaoAnterior, info, botaoProximo)
+}
+
+const carregarPagina = async (pagina) => {
+    state.isLoading = true
+    renderPaginacao()
+    mostrarLoading()
+
+    const dadosPagina = await pegarMonstrosPagina(pagina, PAGE_SIZE)
+    state.currentPage = dadosPagina.pagina
+    state.totalPages = dadosPagina.totalPages
+
+    limparMonstros()
+    renderMonstros(dadosPagina.monstros)
+
+    esconderLoading()
+    state.isLoading = false
+    renderPaginacao()
+}
+
+const isPaginaMonstros = location.href.includes('monstros.html')
+
+if (isPaginaMonstros) {
+    carregarPagina(1)
 }
